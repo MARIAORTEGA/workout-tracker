@@ -74,6 +74,25 @@ db.Workout.create({ name: "Workout Tracker" })
     });
   });
 
+//get route to View combined weight of 
+//multiple exercises from 
+//past 7 workouts on the stats page
+app.get("/api/workouts", (req, res) => {
+  db.Workout.findOne(
+    {
+      _id:mongojs.Objectid(req.params.id)
+    })
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+//get route View total duration of 
+//each workout from past 7
+//workouts on the stats page
+
 
 
 app.listen(PORT, () => {
