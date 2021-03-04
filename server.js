@@ -38,7 +38,7 @@ db.Workout.create({ name: "Workout Tracker" })
       });
   });
 
-  //to addExcericse
+  //to addExcericse and update
   app.post("/api/workouts/", ({ body }, res) => {
     db.Workout.create(body)
       .then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
@@ -50,8 +50,29 @@ db.Workout.create({ name: "Workout Tracker" })
       });
   });
 
+  //create a new workout
+  app.post("/api/workouts", (req, res) => {
+    console.log(req.body);
+  
+    db.Workout.insert(req.body, (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    });
+  });
 
-
+  //getWorkoutsInRange 
+  app.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({}, (error, data) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.json(found);
+      }
+    });
+  });
 
 
 
