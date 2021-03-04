@@ -25,6 +25,18 @@ db.Workout.create({ name: "Workout Tracker" })
     console.log(message);
   });
 
+  app.get("/api/workouts", (req, res) => {
+    db.Workout.findOne(
+      {
+        _id:mongojs.Objectid(req.params.id)
+      })
+      .then(dbWorkout => {
+        res.json(dbWorkout);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
 
 
 
