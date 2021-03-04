@@ -1,6 +1,6 @@
 // Exporting an object containing workout models
 
 module.exports = {
-    Note: require("./Note"),
-    User: require("./User")
+    Note: require("./Exercise"),
+    User: require("./Exercisenew")
   };
