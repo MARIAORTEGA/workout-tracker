@@ -24,7 +24,7 @@ db.Workout.create({ name: "Workout Tracker" })
   .catch(({ message }) => {
     console.log(message);
   });
-
+//findOne to getLastWorkout
   app.get("/api/workouts", (req, res) => {
     db.Workout.findOne(
       {
@@ -38,7 +38,17 @@ db.Workout.create({ name: "Workout Tracker" })
       });
   });
 
-
+  //to addExcericse
+  app.post("/api/workouts/", ({ body }, res) => {
+    db.Workout.create(body)
+      .then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
+      .then(dbWorkout => {
+        res.json(dbWorkout);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
 
 
 
