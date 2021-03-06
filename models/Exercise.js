@@ -39,12 +39,12 @@ const ExerciseSchema = new Schema({
             },
     });
 
-newExerciseSchema.methods.setCreateWorkout = function() { 
-    this.createWorkout = `${this.type:String} ${this.name:String} ${this.duration:String} ${this.weight:String} ${this.reps:String} ${this.sets:String}   
-    ${this.type:Schema.Types.ObjectId, ref:“Exercise”}`; 
+ExerciseSchema.methods.setCreateWorkout = function() {
+        this.createWorkout = `${this.type} ${this.name} ${this.duration} ${this.weight} ${this.reps} ${this.sets} ${this.Date}`;
+      
+        return this.createWorkout;
+      };
 
-return this.createWorkout; 
-}; 
+const Exercise = mongoose.model("Exercise", ExerciseSchema);
 
-const Exercise = mongoose.model("Exercise", ExerciseSchema); 
-module.exports = Exercise; 
+module.exports = Exercise;

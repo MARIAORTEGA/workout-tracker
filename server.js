@@ -112,7 +112,7 @@ app.get("/api/workouts", (req, res) => {
     {
       $addFields: {
         Weight: { $sum: ""},
-        Duration: {$sum: ""},
+        Duration: { $sum: ""},
       }
     }
   ]
