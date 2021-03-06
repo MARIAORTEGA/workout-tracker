@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 const db = require("./models");
+const html= require("./html-routes.js")
 
 const app = express();
 
@@ -25,6 +26,7 @@ db.Exercise.create({ name: "Workout Tracker" })
     console.log(message);
   });
 
+html(app)
 
 //set all workouts submitted to not new: 
 //.save will insert and update an object and we do not have to use if/else, .save handles both cases 
@@ -45,7 +47,7 @@ db.Exercise.create({ name: "Workout Tracker" })
   //find workouts marked new workout. Get workouts out of collection that are new 
   //get last workout?
   app.get("/api/workouts", (req, res) => {
-    db.Exercise.find({ new: true }, (error, found) => {
+    db.Exercise.find({}, (error, found) => {
       if (error) {
         console.log(error);
       } else {
@@ -124,7 +126,6 @@ app.get("/api/workouts", (req, res) => {
     }
   });
 });
-
 
 
 app.listen(PORT, () => {
