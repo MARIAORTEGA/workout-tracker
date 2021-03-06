@@ -108,7 +108,7 @@ db.Exercise.create({ name: "Workout Tracker" })
 
   //getWorkoutsInRange     
 app.get("/api/workouts", (req, res) => {
-  db.Exercise.aggregate(.sort({ date: -1}) [
+  db.Exercise.aggregate(sort({ date: -1}) [
     {
       $addFields: {
         Weight: { $sum: ""},
