@@ -30,19 +30,19 @@ html(app)
 
 //set all workouts submitted to not new: 
 //.save will insert and update an object and we do not have to use if/else, .save handles both cases 
-  app.post("/api/workouts", ({ body }, res) => {
-    const workouts = body;
+  // app.post("/api/workouts", ({ body }, res) => {
+  //   const workouts = body;
   
-    workout.new = false;
+  //   workout.new = false;
   
-    db.Exercise.save(workouts, (error, saved) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.send(saved);
-      }
-    });
-  });
+  //   db.Exercise.save(workouts, (error, saved) => {
+  //     if (error) {
+  //       console.log(error);
+  //     } else {
+  //       res.send(saved);
+  //     }
+  //   });
+  // });
 
   //find workouts marked new workout. Get workouts out of collection that are new 
   //get last workout?
@@ -58,17 +58,16 @@ html(app)
 
 
 //put route to add exercise 
-  app.put("/api/workouts", ({ params }, res) => {
+  app.put("/api/workouts/:id", ({ params , body}, res) => {
     db.Exercise.update(
       {
-        _id: mongojs.ObjectId(params.id)
+        _id: params.id
       },
-      {
-        $set: {
-          new: true
-        }
-      },
-  
+    {
+      $push:{
+        exercises: body
+      }
+    },
       (error, edited) => {
         if (error) {
           console.log(error);
@@ -83,8 +82,8 @@ html(app)
 
   //to addExcericse and update
   app.post("/api/workouts/", ({ body }, res) => {
-    db.Workout.create(body)
-      .then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
+    db.Exercise.create(body)
+      //.then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
       .then(dbWorkout => {
         res.json(dbWorkout);
       })
@@ -94,22 +93,22 @@ html(app)
   });
 
   //create a new workout
-    app.post("/api/workouts", ({body}, res) => {
-      const newE = new newExercise(body);
-      newE.setCreateWorkout();
+    // app.post("/api/workouts", ({body}, res) => {
+    //   const newE = new newExercise(body);
+    //   newE.setCreateWorkout();
     
-      newExercise.create(newE)
-        .then(dbExercise => {
-          res.json(dbExercise);
-        })
-        .catch(err => {
-          res.json(err);
-        });
-    });
+    //   newExercise.create(newE)
+    //     .then(dbExercise => {
+    //       res.json(dbExercise);
+    //     })
+    //     .catch(err => {
+    //       res.json(err);
+    //     });
+    // });
 
 
   //getWorkoutsInRange     
-app.get("/api/workouts", (req, res) => {
+app.get("/api/workouts/range", (req, res) => {
   db.Exercise.aggregate(sort({ date: -1}) [
     {
       $addFields: {
