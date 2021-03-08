@@ -17,3 +17,4 @@ Mongoose
 Screenshots: 
 
 https://github.com/MARIAORTEGA/workout-tracker/blob/main/Screen%20Shot%202021-03-08%20at%2012.06.59%20AM.png
+![image](https://user-images.githubusercontent.com/71056915/110277366-1b56c400-7fa3-11eb-8e2f-5c0d3e2f9a28.png)
