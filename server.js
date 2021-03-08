@@ -77,7 +77,16 @@ html(app)
   
 //getWorkoutsInRange
 app.get("/api/workouts/range", (req, res) => {
-    db.Exercise.find().sort({ _id: -1,}).limit(7)
+    db.Exercise.find().sort({ _id: -1,}).limit(7) //.aggregate(
+      //     [
+      //           {
+      //             $addFields: {
+      //               totalDuration : {$sum: "$Duration"}, 
+                   
+      //               }
+      //             },
+      //          ])
+      //          .populate("exercises")
     .then((dbExercise)=> {
       res.json(dbExercise);
     })
@@ -91,25 +100,7 @@ app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
 
-//notes:
-// app.get("/api/workouts/range", (req, res) => {
-//   db.Exercise.sort({ _id: -1},).aggregate(
-//     [
-//           {
-//             $addFields: {
-//               totalDuration : {$sum: "$Duration"}, 
-             
-//               }
-//             },
-//          ])
-//          .populate("exercises")
-//   .then((dbExercise)=> {
-//     res.json(dbExercise);
-//   })
-//   .catch((err) => {
-//     res.json(err);
-//   });
-//   });
+
 
 
 
