@@ -20,4 +20,4 @@ Screenshots:
 ![image](https://user-images.githubusercontent.com/71056915/110277394-2d386700-7fa3-11eb-8520-bf45f51f538e.png)
 
 The URL to the deployed application:
-https://notetaking11.herokuapp.com/
+https://workout-tracker-100.herokuapp.com/
