@@ -28,34 +28,6 @@ db.Exercise.create({ name: "Workout Tracker" })
 
 html(app)
 
-//set all workouts submitted to not new: 
-//.save will insert and update an object and we do not have to use if/else, .save handles both cases 
-  // app.post("/api/workouts", ({ body }, res) => {
-  //   const workouts = body;
-  
-  //   workout.new = false;
-  
-  //   db.Exercise.save(workouts, (error, saved) => {
-  //     if (error) {
-  //       console.log(error);
-  //     } else {
-  //       res.send(saved);
-  //     }
-  //   });
-  // });
-
-  
-  //get workouts....original 1
-  // app.get("/api/workouts", (req, res) => {
-  //   db.Exercise.find({}, (error, found) => {
-  //     if (error) {
-  //       console.log(error);
-  //     } else {
-  //       res.json(found);
-  //     }
-  //   });
-  // });
-
   //get workouts
   app.get("/api/workouts", (req, res) => {
     db.Exercise.find({}) 
@@ -105,14 +77,14 @@ html(app)
   
 //getWorkoutsInRange
 app.get("/api/workouts/range", (req, res) => {
-  db.Exercise.find().sort({ _id: -1,}).limit(7)
-  .then((dbExercise)=> {
-    res.json(dbExercise);
-  })
-  .catch((err) => {
-    res.json(err);
-  });
-  });
+    db.Exercise.find().sort({ _id: -1,}).limit(7)
+    .then((dbExercise)=> {
+      res.json(dbExercise);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+    });
   
 
 app.listen(PORT, () => {
@@ -138,3 +110,9 @@ app.listen(PORT, () => {
 //     res.json(err);
 //   });
 //   });
+
+
+
+
+
+
