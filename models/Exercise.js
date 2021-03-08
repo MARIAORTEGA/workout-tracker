@@ -46,8 +46,6 @@ exercises:[
         }
 ],
     
-
-    
     });
 
 ExerciseSchema.methods.setCreateWorkout = function() {

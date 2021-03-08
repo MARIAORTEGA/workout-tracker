@@ -44,7 +44,7 @@ html(app)
   //   });
   // });
 
-  //find workouts marked new workout. Get workouts out of collection that are new 
+  
   //get last workout?
   app.get("/api/workouts", (req, res) => {
     db.Exercise.find({}, (error, found) => {
@@ -80,7 +80,7 @@ html(app)
     );
   });
 
-  //to addExcericse and update
+  //create workout 1 the original
   app.post("/api/workouts/", ({ body }, res) => {
     db.Exercise.create(body)
       //.then(({ _id }) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
@@ -92,7 +92,7 @@ html(app)
       });
   });
 
-  //create a new workout
+  //create a new workout 
     // app.post("/api/workouts", ({body}, res) => {
     //   const newE = new newExercise(body);
     //   newE.setCreateWorkout();
@@ -106,18 +106,11 @@ html(app)
     //     });
     // });
 
+  
 
-  //getWorkoutsInRange     
+ //getWorkoutsInRange   
 app.get("/api/workouts/range", (req, res) => {
-  db.Exercise.aggregate(sort({ date: -1}) [
-    {
-      $addFields: {
-        Weight: { $sum: ""},
-        Duration: { $sum: ""},
-      }
-    }
-  ]
-  , (error, found) => {
+  db.Exercise.find({}, (error, found) => {
     if (error) {
       console.log(error);
     } else {
@@ -130,3 +123,26 @@ app.get("/api/workouts/range", (req, res) => {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
+
+
+
+
+//note
+  
+//  app.get("/api/workouts/range", (req, res) => {
+//   db.Exercise.aggregate(sort({ _id: -1}) [
+//     {
+//        $addFields: {
+         
+//           Duration: { $sum: "$totalDuration"},
+//       }
+//     }
+//   ]
+//   , (error, found) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       res.json(found);
+//     }
+//   });
+// });
