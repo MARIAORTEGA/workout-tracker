@@ -15,6 +15,5 @@ MongoDB
 Mongoose 
 
 Screenshots: 
-Screen Shot 2021-03-08 at 12.06.59 AM.png
 
-/Users/Maria/workout-tracker/Screen Shot 2021-03-08 at 12.06.59 AM.png
+https://github.com/MARIAORTEGA/workout-tracker/blob/main/Screen%20Shot%202021-03-08%20at%2012.06.59%20AM.png
