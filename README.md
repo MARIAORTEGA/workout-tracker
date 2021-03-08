@@ -18,3 +18,6 @@ Screenshots:
 
 ![image](https://user-images.githubusercontent.com/71056915/110277366-1b56c400-7fa3-11eb-8e2f-5c0d3e2f9a28.png)
 ![image](https://user-images.githubusercontent.com/71056915/110277394-2d386700-7fa3-11eb-8520-bf45f51f538e.png)
+
+The URL to the deployed application:
+https://notetaking11.herokuapp.com/
