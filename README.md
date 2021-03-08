@@ -1,4 +1,4 @@
-Workout-Tracker 
+Workout-Tracker 🏋🏽‍♀️
 
 This web app allows a user to view, create, and track workouts.  
 
