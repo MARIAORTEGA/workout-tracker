@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
@@ -8,6 +9,9 @@ const db = require("./models");
 const html= require("./html-routes.js")
 
 const app = express();
+
+
+
 
 app.use(logger("dev"));
 
